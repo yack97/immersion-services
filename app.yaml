@@ -1,0 +1,10 @@
+runtime: python39  # Establece la versión de Python a la versión 3.9
+
+entrypoint: gunicorn -b :$PORT main:app  # Aquí estamos diciendo a Gunicorn que use main.py y que la instancia de Flask se llama 'app'.
+
+handlers:
+- url: /static
+  static_dir: static
+
+- url: .*
+  script: auto
